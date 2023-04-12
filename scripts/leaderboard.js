@@ -45,7 +45,8 @@ class LeaderboardScene extends Phaser.Scene {
         headerRow.add(scoreFields);
         tableContainer.add(headerRow);
 
-        axios.get('/bomb-blitz/api/leaderboard.php').then((response) => {
+        axios.get('/api/leaderboard.php').then((response) => {
+            console.log(response);
             // Parcours de la liste des scores
             response.data.forEach((score, i) => {
                 const row = this.add.container(0, (i + 2) * 35);
