@@ -18,11 +18,6 @@ class MenuScene extends Phaser.Scene {
             bg.displayHeight = this.sys.game.config.height;
         });
 
-        // Ajout de la musique
-        let music = this.sound.add('bomb-blitz-tense-2');
-        music.play();
-        music.volume = 0.15;
-
         // Ajout d'un titre
         this.add.text(this.cameras.main.centerX, 100, 'BombBlitz', {
             font: '128px Arial',
@@ -61,11 +56,9 @@ class MenuScene extends Phaser.Scene {
         // Ajout d'un événement de clic sur le bouton de jeu
         playButton.on('pointerdown', function () {
             this.scene.start('InputPseudoScene');
-            music.stop();
         }, this);
         leaderboardButton.on('pointerdown', function () {
-            this.scene.start('DashboardScene');
-            music.stop();
+            this.scene.start('LeaderboardScene');
         }, this);
     }
 }

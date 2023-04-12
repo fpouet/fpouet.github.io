@@ -21,6 +21,7 @@ class InputPseudoScene extends Phaser.Scene {
         
         let usernameInput = document.querySelector("#username-input");
         usernameInput.style.display = "block";
+        usernameInput.style.marginLeft = this.cameras.main.centerX + "px";
 
         const playButton = this.add.sprite(this.cameras.main.centerX, 500, 'button').setInteractive();
         playButton.on('pointerover', () => {
@@ -33,12 +34,12 @@ class InputPseudoScene extends Phaser.Scene {
 
         playButton.on('pointerdown', () => {
             let value = document.querySelector("#username-input").value;
-            if (value !== "" || value !== null){
+            if (value !== "" && value !== null) {
                 localStorage.setItem('username', value);
+                this.sound.get('bomb-blitz-tense').stop();
                 this.scene.start('LevelScene');
                 usernameInput.style.display = "none";
             }
-
         });
     }
 }
