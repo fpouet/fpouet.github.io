@@ -15,31 +15,31 @@ class LeaderboardScene extends Phaser.Scene {
             bg.displayHeight = this.sys.game.config.height;
         });
 
-        this.add.text(this.cameras.main.centerX, 100, 'leaderboard', {
+        this.add.text(this.cameras.main.centerX, 100, 'TABLEAU DES SCORES', {
             font: '32px Arial',
             fill: '#ffffff'
         }).setOrigin(0.5);
 
-        let backButton = this.add.sprite(75, 75, 'return').setInteractive();
+        let backButton = this.add.sprite(75, 75, 'return').setInteractive().setScale(0.1);
         backButton.on('pointerdown', function () {
             this.scene.start('MenuScene');
         }, this);
 
         backButton.on('pointerover', () => {
-            backButton.setScale(1.1);
+            backButton.setScale(0.13);
         });
 
         backButton.on('pointerout', () => {
-            backButton.setScale(1);
+            backButton.setScale(0.1);
         });
 
 
         const tableContainer = this.add.container(this.cameras.main.centerX, 200);
 
         const headerRow = this.add.container(0, 0);
-        const usernameFields = this.add.text(0, 0, "Username");
+        const usernameFields = this.add.text(-350, 0, "Username");
         usernameFields.setStyle({fontSize: '48px'});
-        const scoreFields = this.add.text(300, 0, "Score");
+        const scoreFields = this.add.text(100, 0, "Score");
         scoreFields.setStyle({fontSize: '48px'});
         headerRow.add(usernameFields);
         headerRow.add(scoreFields);
